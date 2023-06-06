@@ -3,6 +3,7 @@ package com.itavare0.customer.api;
 import com.itavare0.customer.modal.Person;
 import com.itavare0.customer.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class PersonController {
 
     @PostMapping
     public void addPerson(
-           @RequestBody Person person) {
+        @NonNull  @RequestBody Person person) {
         personService.addPerson(person);
     }
 
@@ -42,7 +43,7 @@ public class PersonController {
     }
 
     @PutMapping(path = "{id}")
-    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Person personToUpdate) {
+    public void updatePerson(@PathVariable("id") UUID id, @NonNull @RequestBody Person personToUpdate) {
         personService.updatePerson(id, personToUpdate);
     }
 }
